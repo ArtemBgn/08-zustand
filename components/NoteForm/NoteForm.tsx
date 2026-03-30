@@ -8,13 +8,6 @@ import { createNote } from '@/lib/api';
 import { useNoteDraftStore } from '../../lib/store/noteCreateStore';
 import css from './NoteForm.module.css';
 
-/*
-const initialValues: NoteCreate = {
-  title: '',
-  content: '',
-  tag: 'Todo',
-};/**/
-
 const validationSchema = Yup.object().shape({
   title: Yup.string()
     .min(3, 'Title too short')
@@ -24,7 +17,7 @@ const validationSchema = Yup.object().shape({
   tag: Yup.string().required(),
 });
 
-export default function NoteForm(/*{ onClose }: NoteFormProps*/) {
+export default function NoteForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const router = useRouter();
   const queryClient = useQueryClient();
