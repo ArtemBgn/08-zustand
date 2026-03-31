@@ -27,6 +27,7 @@ export default function NoteForm() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['notes'] });
       router.push('/notes/filter/all');
+      clearDraft();
     },
   });
 
@@ -60,7 +61,6 @@ export default function NoteForm() {
 
       setErrors({});
       handleMutation(value);
-      clearDraft();
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const validationErrors: Record<string, string> = {};
